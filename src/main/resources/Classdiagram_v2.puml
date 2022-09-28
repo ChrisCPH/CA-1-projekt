@@ -1,17 +1,12 @@
 @startuml
 'https://plantuml.com/class-diagram
+
 class Person {
     - id: int
     - firstName: String
     - lastName: String
     - email: String
     - phone: String
-    + getter()
-    + setter()
-}
-class PersonHobby {
-    - id: int
-    - persons: List<Person>
     - hobbies: List<Hobby>
     + getter()
     + setter()
@@ -20,6 +15,7 @@ class Hobby {
     - id: int
     - name: String
     - description: String
+    - persons: List<Person>
     + getter()
     + setter()
 }
@@ -42,12 +38,9 @@ class Phone {
     + setter()
 }
 
-Person "1" o-- "*" PersonHobby
-PersonHobby "*" --o "1" Hobby
+Person "*" --o "*" Hobby
 Person "*" --o "1" Address
 Address "*" --o "1" CityInfo
 Person "1" -- "*" Phone
-
-
 
 @enduml
