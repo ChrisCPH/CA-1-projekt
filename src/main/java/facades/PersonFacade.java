@@ -13,18 +13,18 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.TypedQuery;
 import utils.EMF_Creator;
 
-public class PeopleFacade {
+public class PersonFacade {
 
-    private static PeopleFacade instance;
+    private static PersonFacade instance;
     private static EntityManagerFactory emf;
 
-    private PeopleFacade() {
+    private PersonFacade() {
     }
 
-    public static PeopleFacade getFacadeExample(EntityManagerFactory _emf) {
+    public static PersonFacade getPersonFacade(EntityManagerFactory _emf) {
         if (instance == null) {
             emf = _emf;
-            instance = new PeopleFacade();
+            instance = new PersonFacade();
         }
         return instance;
     }
@@ -34,7 +34,14 @@ public class PeopleFacade {
     }
 
 
+    public Person getPerson(String email) {
+        EntityManager em = emf.createEntityManager();
 
+        try {
+            TypedQuery<Person> query = em.createQuery("SELECT p FROM Person p WHERE p.email = :email", Person.class);
+            query.setParameter("email", email);
+            return query.getResultList();
+    }
 
 
 }
