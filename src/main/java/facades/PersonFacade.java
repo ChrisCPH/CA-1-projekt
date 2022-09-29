@@ -33,13 +33,11 @@ public class PersonFacade {
     }
 
 
-    public Person getPerson(String email) {
+    public Person getPersonByEmail(String email) {
         EntityManager em = emf.createEntityManager();
-
-
-        TypedQuery<Person> query = em.createQuery("SELECT p FROM Person p WHERE p.email = :email", Person.class);
-        query.setParameter("email", email);
-        return query.getSingleResult();
+        TypedQuery<Person> query = em.createQuery("SELECT p FROM Person p WHERE p.email = 'asd'", Person.class);
+        Person rms = query.getSingleResult();
+        return rms;
 
 
     }
