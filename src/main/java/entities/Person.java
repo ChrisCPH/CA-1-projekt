@@ -47,8 +47,8 @@ public class Person {
 
     @ManyToMany
     @JoinTable(name = "person_hobby",
-            joinColumns = @JoinColumn(name = "hobby_id"),
-            inverseJoinColumns = @JoinColumn(name = "person_id"))
+            joinColumns = @JoinColumn(name = "person_id"),
+            inverseJoinColumns = @JoinColumn(name = "hobby_id"))
     private Set<Hobby> hobbies = new LinkedHashSet<>();
 
     public Integer getId() {
@@ -89,6 +89,14 @@ public class Person {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Set<Hobby> getHobbies() {
+        return hobbies;
+    }
+
+    public void setHobbies(Set<Hobby> hobbies) {
+        this.hobbies = hobbies;
     }
 
     public Set<Phone> getPhones() {

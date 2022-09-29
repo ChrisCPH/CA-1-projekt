@@ -48,12 +48,19 @@ public class Hobby {
         this.name = name;
     }
 
-    public String getDesccription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDesccription(String desccription) {
-        this.description = desccription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
+    public Set<Person> getPersons() {
+        return persons;
+    }
+
+    public void setPersons(Set<Person> persons) {
+        this.persons = persons;
+    }
 }
