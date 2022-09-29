@@ -11,8 +11,8 @@ public class MainTest
         PersonFacade personFacade = PersonFacade.getPersonFacade(emf);
 
 
-        System.out.println(personFacade.getPersonByEmail("asd"));
-
+        System.out.println(personFacade.getPersonByEmail("asd").toString());
+        System.out.println("hej");
 
     }
 }

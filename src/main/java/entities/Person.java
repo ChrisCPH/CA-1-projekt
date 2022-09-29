@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "person")
+@Table(name = "Person")
 public class Person {
     public Person() {
     }
@@ -111,5 +111,18 @@ public class Person {
     @Override
     public int hashCode() {
         return getClass().hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", address=" + address +
+                ", phones=" + phones +
+                ", hobbies=" + hobbies +
+                '}';
     }
 }
