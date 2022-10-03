@@ -24,6 +24,14 @@ public class Person {
         this.address = address;
     }
 
+    public Person(int id, String firstName, String lastName, String email, Address addressId) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.address = addressId;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "person_id", nullable = false)
