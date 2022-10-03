@@ -63,4 +63,14 @@ public class Hobby {
     public void setPersons(Set<Person> persons) {
         this.persons = persons;
     }
+
+    @Override
+    public String toString() {
+        return "Hobby{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", persons=" + persons +
+                '}';
+    }
 }

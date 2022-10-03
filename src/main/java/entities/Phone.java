@@ -66,4 +66,13 @@ public class Phone {
         this.person = person;
     }
 
+    @Override
+    public String toString() {
+        return "Phone{" +
+                "id=" + id +
+                ", number='" + number + '\'' +
+                ", description='" + description + '\'' +
+                ", person=" + person +
+                '}';
+    }
 }

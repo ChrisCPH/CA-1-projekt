@@ -87,6 +87,10 @@ public class Person {
         return address;
     }
 
+    public String getAddressString() {
+        return address.toString();
+    }
+
     public void setAddress(Address address) {
         this.address = address;
     }
@@ -101,6 +105,10 @@ public class Person {
 
     public Set<Phone> getPhones() {
         return phones;
+    }
+
+    public String getPhonesString() {
+        return phones.toString();
     }
 
     public void setPhones(Set<Phone> phones) {
@@ -119,5 +127,18 @@ public class Person {
     @Override
     public int hashCode() {
         return getClass().hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", address=" + address +
+                ", phones=" + phones +
+                ", hobbies=" + hobbies +
+                '}';
     }
 }
