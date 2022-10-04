@@ -1,3 +1,4 @@
+import dtos.PersonDTO;
 import entities.Address;
 import entities.CityInfo;
 import entities.Person;
@@ -25,7 +26,7 @@ public class MainTest
         personFacade.createPerson(4, "asdasd", "Jonathan", "Braad", address);
 
  */
-        List<Person> pers = personFacade.getAllPeople();
+        List<PersonDTO> pers = personFacade.getAllPeople();
 
         System.out.println(pers);
         }

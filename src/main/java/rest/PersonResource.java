@@ -15,13 +15,13 @@ import java.util.List;
 public class PersonResource {
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory();
 
-    private static final PersonFacade facade =  PersonFacade.getInstance(EMF);
+    private static final PersonFacade facade =  PersonFacade.getPersonFacade(EMF);
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
     @GET
     @Produces("text/plain")
     public String getAllPeople() {
-        List<PersonDTO> personDTOList = facade.getAll();
+        List<PersonDTO> personDTOList = facade.getAllPeople();
         return GSON.toJson(personDTOList);
     }
 }

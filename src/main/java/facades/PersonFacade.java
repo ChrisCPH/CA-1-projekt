@@ -1,6 +1,7 @@
 package facades;
 
 import com.mysql.cj.xdevapi.AddResult;
+import dtos.PersonDTO;
 import dtos.RenameMeDTO;
 import entities.Address;
 import entities.CityInfo;
@@ -34,14 +35,15 @@ public class PersonFacade {
         return emf.createEntityManager();
     }
 
-    public static List<Person> getAllPeople()
+    public static List<PersonDTO> getAllPeople()
     {
         EntityManager em = emf.createEntityManager();
 
         try
         {
             TypedQuery<Person> query = em.createQuery("SELECT p FROM Person p", Person.class);
-            return query.getResultList();
+            List<Person> person = query.getResultList();
+            return PersonDTO.getDTOs(person);
         }
         finally
         {
