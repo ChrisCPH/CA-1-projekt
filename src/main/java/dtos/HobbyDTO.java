@@ -1,19 +1,41 @@
 package dtos;
 
+import entities.Hobby;
+import entities.Person;
+
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
-public class HobbyDto implements Serializable {
+public class HobbyDTO implements Serializable {
     private final Integer id;
     private final String name;
     private final String description;
-    private final Set<PersonInnerDTO> persons;
+    private final List<PersonInnerDTO> persons = new ArrayList<>();
 
-    public HobbyDto(Integer id, String name, String description, Set<PersonInnerDTO> persons) {
+    public HobbyDTO(Integer id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.persons = persons;
+
+    }
+
+    public HobbyDTO(Hobby hobby) {
+        this.id = hobby.getId();
+        this.name = hobby.getName();
+        this.description = hobby.getDescription();
+        hobby.getPersons().forEach( person -> {
+            persons.add(new PersonInnerDTO(person));
+        });
+    }
+
+    public static List<HobbyDTO> getDTOs(List<Hobby> hobbies) {
+        List<HobbyDTO> hobbyDTOList = new ArrayList<>();
+        hobbies.forEach( hobby -> {
+            hobbyDTOList.add(new HobbyDTO(hobby));
+        });
+        return hobbyDTOList;
     }
 
     public Integer getId() {
@@ -28,7 +50,7 @@ public class HobbyDto implements Serializable {
         return description;
     }
 
-    public Set<PersonInnerDTO> getPersons() {
+    public List<PersonInnerDTO> getPersons() {
         return persons;
     }
 
@@ -52,6 +74,13 @@ public class HobbyDto implements Serializable {
             this.firstName = firstName;
             this.lastName = lastName;
             this.email = email;
+        }
+
+        public PersonInnerDTO(Person person) {
+            this.id = person.getId();
+            this.firstName = person.getFirstName();
+            this.lastName = person.getLastName();
+            this.email = person.getEmail();
         }
 
         public Integer getId() {

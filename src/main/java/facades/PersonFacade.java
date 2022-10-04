@@ -12,8 +12,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 
 //import errorhandling.RenameMeNotFoundException;
-
-import org.graalvm.compiler.core.common.type.ArithmeticOpTable;
 import utils.EMF_Creator;
 
 public class PersonFacade {
