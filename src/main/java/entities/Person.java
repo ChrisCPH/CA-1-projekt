@@ -95,10 +95,6 @@ public class Person {
         return address;
     }
 
-    public String getAddressString() {
-        return address.toString();
-    }
-
     public void setAddress(Address address) {
         this.address = address;
     }
@@ -113,10 +109,6 @@ public class Person {
 
     public Set<Phone> getPhones() {
         return phones;
-    }
-
-    public String getPhonesString() {
-        return phones.toString();
     }
 
     public void setPhones(Set<Phone> phones) {

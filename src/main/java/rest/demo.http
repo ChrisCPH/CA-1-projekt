@@ -1,4 +1,4 @@
-GET http://localhost:8080/devops_starter_war_exploded/api/xxx
+GET http://localhost:8080/CA1_projekt_war_exploded/api/persons
 
 ###
 POST http://localhost:8080/devops_starter_war_exploded/api/xxx
