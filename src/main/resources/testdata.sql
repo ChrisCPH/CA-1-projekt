@@ -17,7 +17,7 @@ INSERT INTO Phone (number, description, person_id) VALUES ('41527312','Mobil','2
 INSERT INTO Phone (number, description, person_id) VALUES ('20853039','Hjemme tlf.','2');
 INSERT INTO Phone (number, description, person_id) VALUES ('61690741','Mobil','4');
 INSERT INTO Phone (number, description, person_id) VALUES ('30845335','Mobil','5');
-INSERT INTO Person_obby (person_id, hobby_id) VALUES ('1','2');
+INSERT INTO Person_Hobby (person_id, hobby_id) VALUES ('1','2');
 INSERT INTO Person_Hobby (person_id, hobby_id) VALUES ('1','4');
 INSERT INTO Person_Hobby (person_id, hobby_id) VALUES ('2','1');
 INSERT INTO Person_Hobby (person_id, hobby_id) VALUES ('2','5');

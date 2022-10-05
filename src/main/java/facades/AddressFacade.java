@@ -35,20 +35,9 @@ public class AddressFacade {
 
     public List<AddressDTO> getAllAddresses() {
         EntityManager em = getEntityManager();
-        try
-        {
-            TypedQuery<Address> query = em.createQuery("SELECT a FROM Address a", Address.class);
-            List<Address> addresses = query.getResultList();
-            return AddressDTO.getDTOs(addresses);
-        }
-        finally
-        {
-            em.close();
-        }
-
+        TypedQuery<Address> query = em.createQuery("SELECT a FROM Address a", Address.class);
+        List<Address> addresses = query.getResultList();
+        return AddressDTO.getDTOs(addresses);
     }
-
-
-
 
 }

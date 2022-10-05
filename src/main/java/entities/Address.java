@@ -5,7 +5,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "address")
+@Table(name = "Address")
 public class Address {
     public Address() {
     }
@@ -74,14 +74,4 @@ public class Address {
         this.people = people;
     }
 
-    @Override
-    public String toString() {
-        return "Address{" +
-                "id=" + id +
-                ", street='" + street + '\'' +
-                ", additionalInfo='" + additionalInfo + '\'' +
-                ", cityInfo=" + cityInfo +
-                ", people=" + people +
-                '}';
-    }
 }

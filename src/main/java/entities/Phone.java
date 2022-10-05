@@ -3,13 +3,13 @@ package entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "phone")
+@Table(name = "Phone")
 public class Phone {
     public Phone() {
     }
 
     public Phone(String number, String description) {
-        this.number = number;
+        this.number  = number;
         this.description = description;
     }
 
@@ -66,6 +66,7 @@ public class Phone {
         this.person = person;
     }
 
+
     @Override
     public String toString() {
         return "Phone{" +
@@ -75,4 +76,5 @@ public class Phone {
                 ", person=" + person +
                 '}';
     }
+
 }
