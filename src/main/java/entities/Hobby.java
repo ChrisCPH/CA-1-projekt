@@ -27,7 +27,7 @@ public class Hobby {
     private String description;
 
     @ManyToMany
-    @JoinTable(name = "person_hobby",
+    @JoinTable(name = "Person_Hobby",
             joinColumns = @JoinColumn(name = "hobby_id"),
             inverseJoinColumns = @JoinColumn(name = "person_id"))
     private Set<Person> persons = new LinkedHashSet<>();
