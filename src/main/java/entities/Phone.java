@@ -9,7 +9,7 @@ public class Phone {
     }
 
     public Phone(String number, String description) {
-        this.number = number;
+        this.number  = number;
         this.description = description;
     }
 
@@ -65,6 +65,7 @@ public class Phone {
     public void setPerson(Person person) {
         this.person = person;
     }
+
 
     @Override
     public String toString() {
