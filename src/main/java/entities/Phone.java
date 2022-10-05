@@ -3,7 +3,7 @@ package entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "phone")
+@Table(name = "Phone")
 public class Phone {
     public Phone() {
     }
@@ -76,4 +76,5 @@ public class Phone {
                 ", person=" + person +
                 '}';
     }
+
 }

@@ -54,7 +54,7 @@ public class Person {
     private Set<Phone> phones = new LinkedHashSet<>();
 
     @ManyToMany
-    @JoinTable(name = "person_hobby",
+    @JoinTable(name = "Person_Hobby",
             joinColumns = @JoinColumn(name = "person_id"),
             inverseJoinColumns = @JoinColumn(name = "hobby_id"))
     private Set<Hobby> hobbies = new LinkedHashSet<>();

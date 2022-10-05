@@ -1,7 +1,7 @@
 package facades;
 
 import utils.EMF_Creator;
-import entities.RenameMe;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import org.junit.jupiter.api.AfterAll;
@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 
 //Uncomment the line below, to temporarily disable this test
 //@Disabled
+/*
 public class FacadeExampleTest {
 
     private static EntityManagerFactory emf;
@@ -62,3 +63,5 @@ public class FacadeExampleTest {
     
 
 }
+
+ */
