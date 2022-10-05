@@ -12,7 +12,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Path("/hello-world")
+@Path("/address")
 public class AddressResource {
 
 

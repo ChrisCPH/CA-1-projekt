@@ -31,10 +31,10 @@ public class PersonDTO implements Serializable {
         this.firstName = person.getFirstName();
         this.lastName = person.getLastName();
         this.email = person.getEmail();
+        this.address = new AddressInnerDTO(person.getAddress());
         person.getHobbies().forEach( hobby -> {
             hobbies.add(new HobbyInnerDTO(hobby));
         });
-        this.address = new AddressInnerDTO(person.getAddress());
         person.getPhones().forEach( phone -> {
             phoneNumbers.add(new PhoneInnerDTO(phone));
         });

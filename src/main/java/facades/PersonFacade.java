@@ -7,6 +7,8 @@ import entities.Address;
 import entities.CityInfo;
 import entities.Person;
 import entities.RenameMe;
+
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -35,9 +37,9 @@ public class PersonFacade {
         return emf.createEntityManager();
     }
 
-    public static List<PersonDTO> getAllPeople()
+    public List<PersonDTO> getAllPeople()
     {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = getEntityManager();
 
         try
         {
@@ -51,33 +53,25 @@ public class PersonFacade {
         }
     }
 
-    public Person getPersonByEmail(String email) {
-        EntityManager em = emf.createEntityManager();
+    public PersonDTO getPersonByEmail(String email) {
+        EntityManager em = getEntityManager();
         TypedQuery<Person> query = em.createQuery("SELECT p FROM Person p WHERE p.email = :email", Person.class);
         query.setParameter("email", email);
         Person rms = query.getSingleResult();
-        return rms;
+        return new PersonDTO(rms);
     }
 
-    public Person createPerson(int personId, String email, String firstName, String Lastname, Address addressId)
+    public PersonDTO createPerson(String email, String firstName, String Lastname, Address addressId)
     {
-        EntityManager em = emf.createEntityManager();
-        Person newPerson = new Person(personId, firstName, Lastname, email, addressId);
+        EntityManager em = getEntityManager();
+        Person newPerson = new Person(firstName, Lastname, email, addressId);
         em.getTransaction().begin();
         em.persist(addressId);
         em.persist(addressId.getCityInfo());
         em.persist(newPerson);
         em.getTransaction().commit();
         em.close();
-        return newPerson;
-    }
-
-    public List<Person> getPersonsByEmail(String hobbyId) {
-        EntityManager em = emf.createEntityManager();
-        TypedQuery<Person> query = em.createQuery("SELECT p FROM Person p JOIN p.hobbies hob JOIN hob.persons h WHERE h.id = :id", Person.class);
-        query.setParameter("id", hobbyId);
-        List<Person> rms = query.getResultList();
-        return rms;
+        return new PersonDTO(newPerson);
     }
 
     public void editPerson(long id, String email, String firstname, String lastname, Address address)
@@ -93,7 +87,33 @@ public class PersonFacade {
         em.close();
     }
 
+    public PersonDTO deletePerson (Integer id) {
+        EntityManager em = getEntityManager();
+        Person p = em.find(Person.class, id);
+        try {
 
+            em.getTransaction().begin();
+            em.remove(p);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+        return new PersonDTO(p);
+    }
 
+    public List<Person> getPersonsByHobby(String hobbyId) {
+        EntityManager em = getEntityManager();
+        TypedQuery<Person> query = em.createQuery("SELECT p FROM Person p JOIN p.hobbies hob JOIN hob.persons h WHERE h.id = :id", Person.class);
+        query.setParameter("id", hobbyId);
+        List<Person> rms = query.getResultList();
+        return rms;
+    }
 
+    public List<Person> getPersonsByCityInfo(String zipcode) {
+        EntityManager em = getEntityManager();
+        TypedQuery<Person> query = em.createQuery("", Person.class);
+        query.setParameter("zipcode", zipcode);
+        List<Person> rms = query.getResultList();
+        return rms;
+    }
 }

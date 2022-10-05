@@ -5,7 +5,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "hobby")
+@Table(name = "Hobby")
 public class Hobby {
     public Hobby() {
     }
