@@ -1,21 +1,15 @@
 package facades;
 
-import com.mysql.cj.xdevapi.AddResult;
 import dtos.PersonDTO;
-import dtos.RenameMeDTO;
 import entities.Address;
-import entities.CityInfo;
 import entities.Person;
-import entities.RenameMe;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 
 //import errorhandling.RenameMeNotFoundException;
-import utils.EMF_Creator;
 
 public class PersonFacade {
 
