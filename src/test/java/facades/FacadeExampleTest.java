@@ -1,23 +1,24 @@
 package facades;
 
+import dtos.PersonDTO;
+import entities.Person;
+import org.junit.jupiter.api.*;
 import utils.EMF_Creator;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 //Uncomment the line below, to temporarily disable this test
-//@Disabled
-/*
+@Disabled
+
 public class FacadeExampleTest {
 
     private static EntityManagerFactory emf;
-    private static FacadeExample facade;
+    private static PersonFacade facade;
 
     public FacadeExampleTest() {
     }
@@ -25,7 +26,7 @@ public class FacadeExampleTest {
     @BeforeAll
     public static void setUpClass() {
        emf = EMF_Creator.createEntityManagerFactoryForTest();
-       facade = FacadeExample.getFacadeExample(emf);
+       facade = PersonFacade.getPersonFacade(emf);
     }
 
     @AfterAll
@@ -34,15 +35,14 @@ public class FacadeExampleTest {
     }
 
     // Setup the DataBase in a known state BEFORE EACH TEST
-    //TODO -- Make sure to change the code below to use YOUR OWN entity class
     @BeforeEach
     public void setUp() {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            em.createNamedQuery("RenameMe.deleteAllRows").executeUpdate();
-            em.persist(new RenameMe("Some txt", "More text"));
-            em.persist(new RenameMe("aaa", "bbb"));
+            em.createNamedQuery("Person.deleteAllRows").executeUpdate();
+            em.persist(new Person("firstName2", "lastName2","email2@email.com"));
+            em.persist(new Person("firstName1", "lastName1","email1@email.com"));
 
             em.getTransaction().commit();
         } finally {
@@ -55,13 +55,9 @@ public class FacadeExampleTest {
 //        Remove any data after each test was run
     }
 
-    // TODO: Delete or change this method 
     @Test
-    public void testAFacadeMethod() throws Exception {
-        assertEquals(2, facade.getRenameMeCount(), "Expects two rows in the database");
+    public void getAll() throws Exception {
+        List<PersonDTO> list = facade.getAllPeople();
+        assertEquals(2, list.size());
     }
-    
-
 }
-
- */

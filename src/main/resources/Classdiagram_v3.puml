@@ -1,0 +1,52 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Person {
+    - id: int
+    - firstName: String
+    - lastName: String
+    - email: String
+    - phone: String
+    - hobbies: List<Hobby>
+    + getter()
+    + setter()
+    + equals()
+    + hashcode()
+    + toString()
+}
+class Hobby {
+    - id: int
+    - name: String
+    - description: String
+    - persons: List<Person>
+    + getter()
+    + setter()
+    + toString()
+}
+class Address {
+    - street: String
+    - additionalInfo: String
+    + getter()
+    + setter()
+}
+class CityInfo {
+    - zipcode: String
+    - city: String
+    + getter()
+    + setter()
+    + toString()
+}
+class Phone {
+    - number: String
+    - description: String
+    + getter()
+    + setter()
+    + toString()
+}
+
+Person "*" --o "*" Hobby
+Person "*" --o "1" Address
+Address "*" --o "1" CityInfo
+Person "1" -- "*" Phone
+
+@enduml
