@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PersonDTO implements Serializable {
-    private final Integer id;
+    private Integer id;
     private final String firstName;
     private final String lastName;
     private final String email;
@@ -84,6 +84,10 @@ public class PersonDTO implements Serializable {
                 "lastName = " + lastName + ", " +
                 "email = " + email + ", " +
                 "hobbies = " + hobbies + ")";
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public static class HobbyInnerDTO implements Serializable {

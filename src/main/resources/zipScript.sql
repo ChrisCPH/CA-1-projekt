@@ -4,7 +4,7 @@ INSERT INTO City_Info (zipcode, city) VALUES ('0877','København C');
 INSERT INTO City_Info (zipcode, city) VALUES ('0892','Sjælland USF P');
 INSERT INTO City_Info (zipcode, city) VALUES ('0893','Sjælland USF B');
 INSERT INTO City_Info (zipcode, city) VALUES ('0894','Udbetaling');
-INSERT INTO City_Info (zipcode, city) VALUES ('0897','eBrevsprækken');
+INSERT INTO City_Info (zipcode, city) VALUES ('0897','Brevsprækken');
 INSERT INTO City_Info (zipcode, city) VALUES ('0899','Kommuneservice');
 INSERT INTO City_Info (zipcode, city) VALUES ('0900','København C');
 INSERT INTO City_Info (zipcode, city) VALUES ('0910','København C');

@@ -26,7 +26,6 @@ public class Populator {
         List<Phone> phones = new ArrayList<>();
         phones.add(new Phone("82828282","Mobil"));
         phones.add(new Phone("23242526","Hjemme tlf."));
-        facade.createPerson("Test","Test","test@test.com",address);
     }
     
     public static void main(String[] args) {

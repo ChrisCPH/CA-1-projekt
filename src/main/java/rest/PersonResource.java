@@ -8,12 +8,13 @@ import utils.EMF_Creator;
 
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/persons")
 public class PersonResource {
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory();
-
     private static final PersonFacade facade =  PersonFacade.getPersonFacade(EMF);
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
@@ -24,6 +25,45 @@ public class PersonResource {
         return GSON.toJson(personDTOList);
     }
 
+    @Path("{id}")
+    @GET
+    @Produces("text/plain")
+    public String getPersonById(@PathParam("id") int id) {
+        return GSON.toJson(facade.getPersonById(id));
+    }
 
+    @Path("hobbies/{hobby}")
+    @GET
+    @Produces("text/plain")
+    public String getPersonsByHobby(@PathParam("hobby") String hobby) {
+        return GSON.toJson(facade.getPersonsByHobby(hobby));
+    }
+
+    @Path("cities/{city}")
+    @GET
+    @Produces("text/plain")
+    public String getPersonsByCity(@PathParam("city") String city) {
+        return GSON.toJson(facade.getPersonsByCity(city));
+    }
+
+    @POST
+    @Produces({MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
+    public Response createPerson(String jsonInput){
+        PersonDTO personDTO = GSON.fromJson(jsonInput, PersonDTO.class);
+        PersonDTO returned = facade.createPerson(personDTO);
+        return Response.ok().entity(GSON.toJson(returned)).build();
+    }
+
+    @PUT
+    @Path("update/{id}")
+    @Produces({MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
+    public Response updatePerson(@PathParam("id") Integer id, String jsonInput){
+        PersonDTO personDTO = GSON.fromJson(jsonInput, PersonDTO.class);
+        personDTO.setId(id);
+        PersonDTO returned = facade.createPerson(personDTO);
+        return Response.ok().entity(GSON.toJson(returned)).build();
+    }
 
 }

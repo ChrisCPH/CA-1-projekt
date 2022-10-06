@@ -1,7 +1,9 @@
 package facades;
 
 import dtos.AddressDTO;
+import dtos.PersonDTO;
 import entities.Address;
+import entities.Person;
 import rest.AddressResource;
 
 import javax.persistence.EntityManager;
@@ -38,6 +40,19 @@ public class AddressFacade {
         TypedQuery<Address> query = em.createQuery("SELECT a FROM Address a", Address.class);
         List<Address> addresses = query.getResultList();
         return AddressDTO.getDTOs(addresses);
+    }
+
+    public AddressDTO deleteAddress (String zipcode) {
+        EntityManager em = getEntityManager();
+        Address address = em.find(Address.class, zipcode);
+        try {
+            em.getTransaction().begin();
+            em.remove(address);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+        return new AddressDTO(address);
     }
 
 }
