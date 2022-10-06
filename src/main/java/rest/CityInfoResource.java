@@ -14,7 +14,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Path("/CityInfos")
+@Path("/cities")
 public class CityInfoResource {
 
 
@@ -22,7 +22,6 @@ public class CityInfoResource {
     private static final CityInfoFacade cityinfofacade = CityInfoFacade.getCityInfoFacade(EMF);
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
-    @Path("all")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getAllCityInfo() {

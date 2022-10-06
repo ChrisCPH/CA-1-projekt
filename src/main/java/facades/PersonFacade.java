@@ -41,7 +41,6 @@ public class PersonFacade {
     public List<PersonDTO> getAllPeople()
     {
         EntityManager em = getEntityManager();
-
         try
         {
             TypedQuery<Person> query = em.createQuery("SELECT p FROM Person p", Person.class);
@@ -84,6 +83,21 @@ public class PersonFacade {
         return personDTOList;
     }
 
+    public PersonDTO getPersonByPhoneNumber(String phoneNumber) {
+        EntityManager em = getEntityManager();
+        TypedQuery<Person> query = em.createQuery("SELECT p FROM Person p JOIN p.phones ph WHERE ph.number  = :number", Person.class);
+        query.setParameter("number", phoneNumber);
+        Person person = query.getSingleResult();
+        return new PersonDTO(person);
+    }
+
+    public List<PersonDTO> getAllPersonsCityInfo() {
+        EntityManager em = getEntityManager();
+        TypedQuery<Person> query = em.createQuery("SELECT p FROM Person p JOIN p.address a JOIN a.cityInfo c", Person.class);
+        List<Person> person = query.getResultList();
+        return PersonDTO.getDTOs(person);
+    }
+
     public PersonDTO createPerson(PersonDTO personDTO)
     {
         EntityManager em = getEntityManager();
@@ -108,7 +122,7 @@ public class PersonFacade {
         return new PersonDTO(newPerson);
     }
 
-    public void updatePersonName(PersonDTO personDTO)
+    public PersonDTO updatePerson(PersonDTO personDTO)
     {
         EntityManager em = emf.createEntityManager();
         Person person = em.find(Person.class, personDTO.getId());
@@ -133,7 +147,7 @@ public class PersonFacade {
         em.persist(updatedPerson);
         em.getTransaction().commit();
         em.close();
-        em.close();
+        return new PersonDTO(updatedPerson);
     }
 
     public PersonDTO deletePerson (Integer id) {

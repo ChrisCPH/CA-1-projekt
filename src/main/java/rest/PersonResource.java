@@ -32,18 +32,33 @@ public class PersonResource {
         return GSON.toJson(facade.getPersonById(id));
     }
 
-    @Path("hobbies/{hobby}")
+    @Path("hobby/{hobby}")
     @GET
     @Produces("text/plain")
     public String getPersonsByHobby(@PathParam("hobby") String hobby) {
         return GSON.toJson(facade.getPersonsByHobby(hobby));
     }
 
-    @Path("cities/{city}")
+    @Path("city/{city}")
     @GET
     @Produces("text/plain")
     public String getPersonsByCity(@PathParam("city") String city) {
         return GSON.toJson(facade.getPersonsByCity(city));
+    }
+
+    @Path("phone/{number}")
+    @GET
+    @Produces("text/plain")
+    public String getPersonByPhoneNumber(@PathParam("number") String number) {
+        return GSON.toJson(facade.getPersonByPhoneNumber(number));
+    }
+
+    @Path("city")
+    @GET
+    @Produces("text/plain")
+    public String getAllPersonsCityInfo() {
+        List<PersonDTO> personDTOList = facade.getAllPersonsCityInfo();
+        return GSON.toJson(personDTOList);
     }
 
     @POST
@@ -62,7 +77,7 @@ public class PersonResource {
     public Response updatePerson(@PathParam("id") Integer id, String jsonInput){
         PersonDTO personDTO = GSON.fromJson(jsonInput, PersonDTO.class);
         personDTO.setId(id);
-        PersonDTO returned = facade.createPerson(personDTO);
+        PersonDTO returned = facade.updatePerson(personDTO);
         return Response.ok().entity(GSON.toJson(returned)).build();
     }
 

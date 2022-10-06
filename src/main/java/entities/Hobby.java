@@ -5,6 +5,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
+@NamedQuery(name ="Hobby.deleteAllRows",query = "DELETE from Hobby ")
 @Table(name = "Hobby")
 public class Hobby {
     public Hobby() {
