@@ -23,9 +23,8 @@ public class CityInfoResource {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces("text/plain")
     public String getAllCityInfo() {
-
         List<CityInfoDTO> cityinfoDTOList = cityinfofacade.getAllCityInfo();
         return GSON.toJson(cityinfoDTOList);
     }
