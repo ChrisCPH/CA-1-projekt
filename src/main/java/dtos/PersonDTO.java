@@ -31,13 +31,21 @@ public class PersonDTO implements Serializable {
         this.firstName = person.getFirstName();
         this.lastName = person.getLastName();
         this.email = person.getEmail();
-        this.address = new AddressInnerDTO(person.getAddress());
-        person.getHobbies().forEach( hobby -> {
-            hobbies.add(new HobbyInnerDTO(hobby));
-        });
-        person.getPhones().forEach( phone -> {
-            phoneNumbers.add(new PhoneInnerDTO(phone));
-        });
+        if(person.getAddress() != null) {
+            this.address = new AddressInnerDTO(person.getAddress());
+        } else {
+            this.address = null;
+        }
+        if(person.getHobbies() != null) {
+            person.getHobbies().forEach(hobby -> {
+                hobbies.add(new HobbyInnerDTO(hobby));
+            });
+        }
+        if(person.getPhones() != null) {
+            person.getPhones().forEach(phone -> {
+                phoneNumbers.add(new PhoneInnerDTO(phone));
+            });
+        }
     }
 
     public static List<PersonDTO> getDTOs(List<Person> persons) {

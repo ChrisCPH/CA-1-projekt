@@ -31,9 +31,9 @@ public class Phone {
     @Column(name = "description", nullable = false, length = 45)
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "person_id", nullable = false)
-    private Person person;
+    private Person person = new Person();
 
     public Integer getId() {
         return id;
